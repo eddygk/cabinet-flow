@@ -1,0 +1,51 @@
+# Dependency directories
+node_modules/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build output
+/dist
+/build
+/out
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# IDE and editor folders
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbbs.db
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Generated QR codes
+/qrcodes
+
+# Temporary files
+/temp
+
+# Mobile build artifacts
+/src/mobile/android/app/build/
+/src/mobile/ios/build/
+/src/mobile/ios/Pods/

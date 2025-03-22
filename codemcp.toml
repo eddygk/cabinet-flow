@@ -1,0 +1,11 @@
+# CodeMCP Configuration
+version = "0.1.0"
+
+[project]
+name = "cabinet-flow"
+description = "Document management system with QR code integration for custom cabinet makers"
+language = ["typescript", "javascript"]
+
+[analysis]
+include_patterns = ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "**/*.json", "**/*.md"]
+exclude_patterns = ["**/node_modules/**", "**/dist/**", "**/build/**"]

@@ -12,6 +12,8 @@ node_modules/
 /dist
 /build
 /out
+*/dist
+*/build
 
 # Logs
 logs
@@ -34,18 +36,31 @@ pids
 
 # OS files
 .DS_Store
-Thumbbs.db
+Thumbs.db
 
 # Coverage directory used by tools like istanbul
 coverage/
 
 # Generated QR codes
 /qrcodes
+/src/backend/qrcodes
 
 # Temporary files
 /temp
 
-# Mobile build artifacts
-/src/mobile/android/app/build/
-/src/mobile/ios/build/
-/src/mobile/ios/Pods/
+# Uploaded files
+/uploads
+/src/backend/uploads
+
+# TypeScript cache
+*.tsbuildinfo
+
+# dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# Docker volumes
+docker-volumes/

@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:14-alpine
+    container_name: cabinetflow-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: cabinetflow
+      POSTGRES_PASSWORD: cabinetflow
+      POSTGRES_DB: cabinetflow
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - cabinetflow-network
+
+  backend:
+    build:
+      context: ./src/backend
+      dockerfile: Dockerfile.dev
+    container_name: cabinetflow-backend
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+      PORT: 5000
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: cabinetflow
+      DB_PASSWORD: cabinetflow
+      DB_NAME: cabinetflow
+      JWT_SECRET: dev_secret_change_in_production
+      CORS_ORIGIN: http://localhost:3000
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./src/backend:/app
+      - /app/node_modules
+    depends_on:
+      - postgres
+    networks:
+      - cabinetflow-network
+
+  frontend:
+    build:
+      context: ./src/frontend
+      dockerfile: Dockerfile.dev
+    container_name: cabinetflow-frontend
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+      REACT_APP_API_URL: http://localhost:5000
+      WDS_SOCKET_PORT: 3000
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src/frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - cabinetflow-network
+
+networks:
+  cabinetflow-network:
+    driver: bridge
+
+volumes:
+  postgres_data:

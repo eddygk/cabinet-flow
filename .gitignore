@@ -33,6 +33,7 @@ pids
 .vscode/
 *.swp
 *.swo
+cabinet-flow.code-workspace
 
 # OS files
 .DS_Store
